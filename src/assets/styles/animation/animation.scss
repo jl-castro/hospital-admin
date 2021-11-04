@@ -1,0 +1,10 @@
+@keyframes load-from-top {
+  from {
+    background: var(--color-basic-light);
+    opacity: 0.3;
+    top: -120px;
+  }
+  to {
+    top: 0;
+  }
+}
