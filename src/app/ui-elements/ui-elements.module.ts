@@ -11,6 +11,7 @@ import { HospitalEditFormComponent } from './hospital-edit-form/hospital-edit-fo
 import { DoctorEditFormComponent } from './doctor-edit-form/doctor-edit-form.component';
 import { DoctorCreateFormComponent } from './doctor-create-form/doctor-create-form.component';
 import { PatientCreateFormComponent } from './patient-create-form/patient-create-form.component';
+import { HistoryModalComponent } from './history-modal/history-modal.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { PatientCreateFormComponent } from './patient-create-form/patient-create
     DoctorEditFormComponent,
     DoctorCreateFormComponent,
     PatientCreateFormComponent,
+    HistoryModalComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { PatientCreateFormComponent } from './patient-create-form/patient-create
     HospitalEditFormComponent,
     DoctorCreateFormComponent,
     PatientCreateFormComponent,
+    HistoryModalComponent,
   ]
 })
 export class UiElementsModule {

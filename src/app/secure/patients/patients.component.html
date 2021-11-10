@@ -28,7 +28,7 @@
     <div class="patient-item" *ngFor="let patient of patientsList|patientFilter:inputText:searchOption">
       <app-tag-name [name]="patient.name" [lastName]="patient.lastName"></app-tag-name>
 
-      <app-show-content-button [isVisible]="patient.isVisible"
+      <app-show-content-button [isVisible]="patient.isVisible" [user]="patient" [userType]="'Patient'"
                                (setVisibility)="patient.isVisible=$event"
                                (deleteUser)="deletePatient(patient)"></app-show-content-button>
 

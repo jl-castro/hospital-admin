@@ -6,6 +6,7 @@ import {DoctorI} from "../../integration/models/doctor.interface";
 import {ProfileService} from "../../integration/services/profile.service";
 import {ProfileI} from "../../integration/models/profile.interface";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-doctors',
@@ -13,13 +14,13 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./doctors.component.scss']
 })
 export class DoctorsComponent implements OnInit, OnDestroy {
-  public doctors: DoctorI[] = [];
   private subscription = new Subscription();
+  public doctors: DoctorI[] = [];
   public hospitalId = '';
   public inputText = '';
   public searchOption = 'name';
-  public addIcon = faPlus;
   public createIsVisible = false;
+  public addIcon = faPlus;
 
   constructor(private hospitalNotifierService: HospitalNotifierService,
               private doctorService: DoctorService,
@@ -43,7 +44,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
   }
 
   getDoctorsList(id: string): void {
-    this.doctorService.getDoctors().subscribe((doctors: DoctorI[]) => {
+    this.doctorService.getDoctors().pipe(take(1)).subscribe((doctors: DoctorI[]) => {
       this.doctors = [...doctors.filter(doctor => doctor.hospitalId === Number(id))];
       this.setProfiles(this.doctors);
     });
@@ -52,7 +53,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
   setProfiles(doctors: DoctorI[]): void {
     doctors.forEach(doctor => {
       if (doctor.profileId != null) {
-        this.profileService.getProfileById(doctor.profileId).subscribe((img: ProfileI) => {
+        this.profileService.getProfileById(doctor.profileId).pipe(take(1)).subscribe((img: ProfileI) => {
           doctor.urlImage = 'data:image/png;base64,' + img.image;
         });
       }
@@ -60,9 +61,8 @@ export class DoctorsComponent implements OnInit, OnDestroy {
   }
 
   deleteDoctor(doctor: DoctorI) {
-    this.doctorService.deleteDoctor(Number(doctor.doctorId)).subscribe(res => {
+    this.doctorService.deleteDoctor(Number(doctor.doctorId)).pipe(take(1)).subscribe(res => {
       this.getDoctorsList(this.hospitalId);
-      console.log('se elimino');
     });
   }
 

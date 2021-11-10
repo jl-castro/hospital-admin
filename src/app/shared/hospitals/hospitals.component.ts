@@ -1,15 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HospitalService} from "../../integration/services/hospital.service";
 import {HospitalI} from "../../integration/models/hospital.interface";
-import {
-  faDiagnoses,
-  faEdit,
-  faEye,
-  faPlus,
-  faTrashAlt,
-  faUserInjured,
-  faUserMd
-} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faEye, faPlus, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {Subscription} from "rxjs";
 import {take} from "rxjs/operators";
 
@@ -19,14 +11,14 @@ import {take} from "rxjs/operators";
   styleUrls: ['./hospitals.component.scss']
 })
 export class HospitalsComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+  public hospitalList: HospitalI[] = [];
+  public createIsVisible = false;
+  public inputText = '';
   public deleteIcon = faTrashAlt;
   public viewIcon = faEye;
   public editIcon = faEdit;
   public addIcon = faPlus;
-  public hospitalList: HospitalI[] = [];
-  public subscription: Subscription;
-  public inputText = '';
-  public createIsVisible = false;
 
   constructor(private hospitalService: HospitalService) {
     this.subscription = this.loadHospitals();
@@ -48,6 +40,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
   }
 
   ngOnDestroy(): void {

@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../integration/services/patient.service";
 import {PatientI} from "../../integration/models/patient.interface";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-patient-create-form',
@@ -39,10 +40,10 @@ export class PatientCreateFormComponent implements OnInit {
     };
 
 
-    this.patientService.postPatient(patient, this.hospitalId).subscribe(res => {
-      if (res) {
+    this.patientService.postPatient(patient, this.hospitalId).pipe(take(1)).subscribe(patient => {
+      if (patient) {
+        this.createPatient.emit(patient);
         this.cancel.emit(false);
-        this.createPatient.emit(res);
         this.patientForm.value.name = '';
         this.patientForm.value.lastname = '';
         this.patientForm.value.birthday = '';

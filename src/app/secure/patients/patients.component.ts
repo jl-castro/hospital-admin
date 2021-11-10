@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PatientService} from "../../integration/services/patient.service";
 import {PatientI} from "../../integration/models/patient.interface";
 import {ProfileI} from "../../integration/models/profile.interface";
@@ -6,20 +6,21 @@ import {ProfileService} from "../../integration/services/profile.service";
 import {HospitalNotifierService} from "../../integration/services/hospital-notifier.service";
 import {Subscription} from "rxjs";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
   styleUrls: ['./patients.component.scss']
 })
-export class PatientsComponent implements OnInit {
-  public patientsList: PatientI[] = [];
-  public hospitalId = '';
+export class PatientsComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
-  public inputText = '';
+  public patientsList: PatientI[] = [];
   public searchOption = 'name';
-  public addIcon = faPlus;
   public createIsVisible = false;
+  public hospitalId = '';
+  public inputText = '';
+  public addIcon = faPlus;
 
   constructor(private hospitalNotifierService: HospitalNotifierService,
               private patientService: PatientService, private profileService: ProfileService) {
@@ -36,8 +37,12 @@ export class PatientsComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   getPatientsList(id: string): void {
-    this.patientService.getPatients().subscribe((patients: PatientI[]) => {
+    this.patientService.getPatients().pipe(take(1)).subscribe((patients: PatientI[]) => {
       this.patientsList = [...patients.filter(patient => patient.hospitalId === Number(id))];
       this.setProfiles(this.patientsList);
     });
@@ -46,7 +51,7 @@ export class PatientsComponent implements OnInit {
   setProfiles(patients: PatientI[]): void {
     patients.forEach(patient => {
       if (patient.profileId != null) {
-        this.profileService.getProfileById(patient.profileId).subscribe((img: ProfileI) => {
+        this.profileService.getProfileById(patient.profileId).pipe(take(1)).subscribe((img: ProfileI) => {
           patient.urlImage = 'data:image/png;base64,' + img.image;
         });
       }
@@ -54,9 +59,8 @@ export class PatientsComponent implements OnInit {
   }
 
   deletePatient(patient: PatientI) {
-    this.patientService.deletePatient(Number(patient.patientId)).subscribe(res => {
+    this.patientService.deletePatient(Number(patient.patientId)).pipe(take(1)).subscribe(res => {
       this.getPatientsList(this.hospitalId);
-      console.log('se elimino');
     });
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {faAmbulance, faHospital, faHospitalAlt, faHospitalSymbol} from "@fortawesome/free-solid-svg-icons";
+import {faAmbulance, faHospital} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-nothing-selected',

@@ -9,6 +9,7 @@ export interface DoctorI {
   profileId?: string;
   urlImage?: any;
   isVisible: boolean;
+  userType?:string;
 }
 
 export interface SpecialityI {

@@ -1,4 +1,13 @@
 <section class="doctor-item-options">
+  <button class="common-button options-button" (click)="showDialog()">
+    <fa-icon class="view" [icon]="viewIcon"></fa-icon>
+  </button>
+
+  <app-history-modal id="modal_1" class="hidden">
+    Dialog Header
+    <button (click)="closeDialog()">Close Dialog</button>
+  </app-history-modal>
+
   <button class="common-button options-button">
     <fa-icon class="delete" [icon]="deleteIcon" (click)="deleteUser.emit(true)"></fa-icon>
   </button>

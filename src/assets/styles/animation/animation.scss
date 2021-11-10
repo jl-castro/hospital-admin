@@ -13,12 +13,12 @@
   from {
     opacity: 0.3;
     left: 0;
-    color: #393E46;
+    color: var(--color-basic-dark);
   }
   to {
     opacity: 0.9;
     left: 180px;
-    color: #c85c5c;
+    color: var(--color-basic-red2);
   }
 }
 

@@ -28,8 +28,9 @@
     <div class="doctor-item" *ngFor="let doctor of doctors|doctorFilter:inputText:searchOption">
       <app-tag-name [name]="doctor.name" [lastName]="doctor.lastName"></app-tag-name>
 
-      <app-show-content-button [isVisible]="doctor.isVisible"
-                               (setVisibility)="doctor.isVisible=$event" (deleteUser)="deleteDoctor(doctor)"></app-show-content-button>
+      <app-show-content-button [isVisible]="doctor.isVisible" [user]="doctor" [userType]="'Doctor'"
+                               (setVisibility)="doctor.isVisible=$event"
+                               (deleteUser)="deleteDoctor(doctor)"></app-show-content-button>
 
       <div class="info-content" *ngIf="doctor.isVisible">
         <span class="doctor-picture">

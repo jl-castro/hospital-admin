@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HospitalI} from "../../integration/models/hospital.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HospitalService} from "../../integration/services/hospital.service";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-hospital-edit-form',
@@ -38,7 +39,7 @@ export class HospitalEditFormComponent implements OnInit {
       address: this.hospitalForm.value.address,
       name: this.hospitalForm.value.name,
     };
-    this.hospitalService.updateHospital(hospital.id, hospital).subscribe(res => {
+    this.hospitalService.updateHospital(hospital.id, hospital).pipe(take(1)).subscribe(res => {
       if (res) {
         this.editHospital.emit(res);
         this.hospitalForm.value.name = '';

@@ -11,7 +11,6 @@ export class HospitalButtonComponent implements OnInit {
   @Input() icon: IconProp = faUserInjured;
   @Input() style = '';
 
-
   constructor() {
 
   }

@@ -1,0 +1,18 @@
+<div class="modal">
+  <div class="modal-body">
+    <label class="title" ngDefaultControl [(ngModel)]="userRole">{{userRole|titlecase}} History List</label>
+
+    <div class="modal-content">
+      <div class="history-card" *ngFor="let history of histories">
+        <label>Description: {{history.description}}</label>
+
+        <label>Date: {{history.createdAt|date:'medium'}}</label>
+
+        <label>{{userRole==='doctor'?' Patient: ':' Dr. '}} {{history.userName}}</label>
+      </div>
+    </div>
+
+    <button class="common-button close-modal" (click)="close()">close</button>
+  </div>
+</div>
+<div class="modal-background"></div>

@@ -8,7 +8,7 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  public backIcon = faChevronLeft
+  public backIcon = faChevronLeft;
 
   constructor() {
   }

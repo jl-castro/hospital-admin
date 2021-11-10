@@ -12,8 +12,8 @@ export class HistoryService {
   constructor(private http: HttpClient) {
   }
 
-  getHistory(historyId: number): Observable<HistoryNotesI> {
-    return this.http.get<HistoryNotesI>(`${environment.url}/histories/${historyId}`);
+  getHistories(): Observable<HistoryNotesI[]> {
+    return this.http.get<HistoryNotesI[]>(`${environment.url}/histories`);
   }
 
   postHistory(history: HistoryNotesI, historyId: any): Observable<HistoryNotesI> {

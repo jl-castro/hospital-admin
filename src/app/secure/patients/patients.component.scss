@@ -12,8 +12,8 @@
     margin: 10px 0;
     width: 120px;
     height: 40px;
-    background-color: #393E46;
-    color: #dbdcd5;
+    background-color: var(--color-basic-dark);
+    color: var(--color-basic-light3);
     border-radius: 5px;
   }
 
@@ -53,7 +53,7 @@
   width: 100%;
   height: min-content;
   grid-column: 1/4;
-  background: #EEEBDD;
+  background: var(--color-basic-light4);
   position: relative;
   animation: load-card .5s ease-in;
   border-radius: 6px;

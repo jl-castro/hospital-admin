@@ -16,6 +16,10 @@ export class DoctorService {
     return this.http.get<DoctorI[]>(`${environment.url}/doctors`);
   }
 
+  getDoctorById(doctorId: string): Observable<DoctorI> {
+    return this.http.get<DoctorI>(`${environment.url}/doctors/${doctorId}`);
+  }
+
   postDoctor(doctor: DoctorI, hospitalId: any): Observable<DoctorI> {
     return this.http.post<DoctorI>(`${environment.url}/doctors`, doctor, {
       headers: {

@@ -1,22 +1,25 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DoctorI, SpecialityI} from "../../integration/models/doctor.interface";
 import {DoctorService} from "../../integration/services/doctor.service";
 import {SpecialityService} from "../../integration/services/speciality.service";
+import {Subscription} from "rxjs";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-doctor-create-form',
   templateUrl: './doctor-create-form.component.html',
   styleUrls: ['./doctor-create-form.component.scss']
 })
-export class DoctorCreateFormComponent implements OnInit {
+export class DoctorCreateFormComponent implements OnInit, OnDestroy {
   @Output() createDoctor: EventEmitter<DoctorI>;
   @Output() cancel: EventEmitter<boolean>;
-  public doctorForm: FormGroup;
+  private hospitalId = localStorage.getItem('hospitalId');
+  private subscription: Subscription = new Subscription();
   public specialities: SpecialityI[] = [];
-  public specialityList: string[] = [];
-  public hospitalId = localStorage.getItem('hospitalId');
+  public doctorForm: FormGroup;
   public file: FileList = {} as FileList;
+  public specialityList: string[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private doctorService: DoctorService,
@@ -32,10 +35,16 @@ export class DoctorCreateFormComponent implements OnInit {
       }
     );
 
-    this.specialitiesService.getSpecialities().subscribe(specialities => this.specialities = [...specialities.filter(spec => spec.hospitalId === Number(this.hospitalId))]);
+    this.subscription = this.specialitiesService.getSpecialities().subscribe(specialities =>
+      this.specialities = [...specialities.filter(spec => spec.hospitalId === Number(this.hospitalId))]
+    );
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   addSpeciality(speciality: SpecialityI): void {
@@ -51,12 +60,12 @@ export class DoctorCreateFormComponent implements OnInit {
       address: this.doctorForm.value.address,
       specialityIds: this.specialityList
     };
-
+    /*TODO search how to upload a file*/
     // this.profileService.postProfile({multipartFile: this.file}).subscribe(res => {
     //   console.log(res);
     // });
 
-    this.doctorService.postDoctor(doctor, this.hospitalId).subscribe(res => {
+    this.doctorService.postDoctor(doctor, this.hospitalId).pipe(take(1)).subscribe(res => {
       if (res) {
         this.cancel.emit(false);
         this.createDoctor.emit(res);

@@ -8,4 +8,5 @@ export interface PatientI {
   profileId?: string;
   urlImage?: any;
   isVisible: boolean;
+  userType?: string;
 }

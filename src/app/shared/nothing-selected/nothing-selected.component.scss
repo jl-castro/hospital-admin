@@ -5,7 +5,7 @@
   height: 100%;
   align-items: center;
   justify-content: space-evenly;
-  background: #F3F4ED;
+  background: var(--color-basic-light2);
   animation: fade-in 1s ease-in;
 
   .icons-content{
@@ -21,7 +21,7 @@
     }
 
     .hospital-icon{
-      color: #132C33;
+      color: var(--color-basic-blue-dark2);
       font-size: 1.8em;
     }
   }

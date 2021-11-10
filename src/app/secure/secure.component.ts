@@ -11,11 +11,11 @@ import {HospitalNotifierService} from "../integration/services/hospital-notifier
 })
 export class SecureComponent implements OnInit, OnDestroy {
 
+  private subscription: Subscription;
   public doctorIcon = faUserMd;
   public patientIcon = faUserInjured;
   public specialityIcon = faDiagnoses;
   public id: any;
-  public subscription: Subscription;
 
   constructor(private _activatedRoute: ActivatedRoute, private hospitalNotifierService: HospitalNotifierService) {
     this.subscription = this._activatedRoute.paramMap.subscribe(params => {

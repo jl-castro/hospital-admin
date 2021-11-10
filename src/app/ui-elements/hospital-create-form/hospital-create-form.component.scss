@@ -30,8 +30,8 @@
   width: 100px;
   height: 40px;
   border-radius: 5px;
-  background-color: #3B5249;
-  color: #dbdcd5;
+  background-color: var(--color-basic-dark2);
+  color: var(--color-basic-light3);
 
   label {
     cursor: pointer;
@@ -43,8 +43,8 @@
   width: 100px;
   height: 40px;
   border-radius: 5px;
-  color: #dbdcd5;
-  background-color: #A9333A;
+  color: var(--color-basic-light3);
+  background-color: var(--color-basic-red);
 }
 
 .input {
@@ -52,7 +52,7 @@
   flex-direction: column;
 
   small {
-    color: #A9333A;
+    color: var(--color-basic-red);
     font-weight: bold;
   }
 }

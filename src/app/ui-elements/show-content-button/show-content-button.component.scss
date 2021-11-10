@@ -23,16 +23,30 @@
   }
 
   .visible {
-    background-color: #132C33;
-    color: #dbdcd5;
+    background-color: var(--color-basic-blue-dark2);
+    color: var(--color-basic-light3);
   }
 
   .not-visible {
-    background: #dbdcd5;
+    background: var(--color-basic-light3);
   }
 
-  .delete{
-    background: #A9333A;
-    color: #dbdcd5;
+  .delete {
+    background: var(--color-basic-red);
+    color: var(--color-basic-light3);
   }
+
+  .view{
+    background: var(--color-basic-orange);
+    color: var(--color-basic-light3);
+  }
+}
+
+.show {
+  display: block;
+}
+
+
+.hidden {
+  display: none;
 }
