@@ -14,11 +14,32 @@
     .hospital-content {
       height: calc(100vh - 80px);
       width: 100%;
+      min-width: 1100px;
     }
 
     .options-content {
       height: calc(100vh - 80px);
       width: 100%;
+      min-width: 700px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .main-container {
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 200vh;
+
+      .hospital-content {
+        height: calc(100vh - 80px);
+      }
+
+      .options-content {
+        height: 100vh;
+      }
     }
   }
 }
