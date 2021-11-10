@@ -1,0 +1,63 @@
+<form class="create-patient-container" [formGroup]="patientForm">
+  <div class="create-patient-field">
+    <label for="name">Name: </label>
+
+    <div class="input">
+      <input id="name" type="text" formControlName="name">
+
+      <small *ngIf="patientForm.controls.name.errors && patientForm.controls.name.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-patient-field">
+    <label for="lastname">Last Name: </label>
+
+    <div class="input">
+      <input id="lastname" type="text" formControlName="lastname">
+
+      <small *ngIf="patientForm.controls.lastname.errors && patientForm.controls.lastname.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-patient-field">
+    <label for="birthday">Birthday: </label>
+
+    <div class="input">
+      <input id="birthday" type="text" formControlName="birthday">
+
+      <small *ngIf="patientForm.controls.birthday.errors && patientForm.controls.birthday.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-patient-field">
+    <label for="address">Address: </label>
+
+    <div class="input">
+      <input id="address" type="text" formControlName="address">
+
+      <small *ngIf="patientForm.controls.address.errors && patientForm.controls.address.touched">
+        * The address is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-patient-profile">
+    <label for="file">Profile picture</label>
+
+    <input id="file" type="file" >
+  </div>
+
+  <button class="common-button create-patient-button" type="submit" [disabled]="patientForm.invalid" (click)="send()">
+    <label>create</label>
+  </button>
+
+  <button class="common-button cancel-button" type="submit" (click)="cancel.emit(false)">
+    <label>cancel</label>
+  </button>
+</form>

@@ -1,0 +1,9 @@
+.info-data {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 60px;
+
+  .info-title {
+    font-weight: bold;
+  }
+}

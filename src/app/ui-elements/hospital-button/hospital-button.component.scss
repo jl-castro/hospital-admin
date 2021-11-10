@@ -1,0 +1,27 @@
+.hospital-button {
+  display: flex;
+  justify-content: space-evenly;
+  height: 45px;
+  width: 45px;
+  border-radius: 5px;
+
+  .hospital-button-icon {
+    font-size: 1.4em;
+  }
+}
+
+.delete-btn {
+  background: #A9333A;
+  color: #dbdcd5;
+}
+
+.view-btn {
+  background: #3E065F;
+  color: #dbdcd5;
+}
+
+.edit-btn {
+  background: #E26A2C;
+  color: #dbdcd5;
+}
+

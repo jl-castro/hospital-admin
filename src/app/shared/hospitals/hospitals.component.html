@@ -1,0 +1,51 @@
+<article class="hospital-container">
+  <label class="hospital-title">Hospitals List</label>
+
+  <section class="hospital-options">
+    <button class="common-button add-hospital" (click)="createIsVisible=true">
+      <label>Add Hospital</label>
+
+      <fa-icon [icon]="addIcon"></fa-icon>
+    </button>
+
+    <div class="search-input">
+      <label for="searchInput">Search</label>
+
+      <input id="searchInput" type="text" [(ngModel)]="inputText" name="inputText">
+    </div>
+  </section>
+
+  <section class="hospital-create-card" *ngIf="createIsVisible">
+    <app-hospital-create-form (createHospital)="loadHospitals()"
+                              (cancel)="createIsVisible=$event">
+    </app-hospital-create-form>
+  </section>
+
+  <section class="hospital-content">
+    <div class="hospital-card" *ngFor="let hospital of hospitalList|hospitalFilter:inputText">
+      <div class="hospital-card-info">
+        <label class="hospital-card-info-name">{{hospital.name}}</label>
+
+        <label class="hospital-card-info-address">{{hospital.address}}</label>
+      </div>
+
+      <div class="hospital-card-options">
+        <app-hospital-button [icon]="viewIcon" [style]="'view-btn'"
+                             [routerLink]="['secure', hospital.id]">
+        </app-hospital-button>
+
+        <app-hospital-button [icon]="editIcon" [style]="'edit-btn'" (click)="hospital.editIsVisible=true">
+        </app-hospital-button>
+
+        <app-hospital-button [icon]="deleteIcon" [style]="'delete-btn'" (click)="deleteHospital(hospital.id)">
+        </app-hospital-button>
+      </div>
+
+      <div class="hospital-card-edit" *ngIf="hospital.editIsVisible">
+        <app-hospital-edit-form [hospital]="hospital" (cancel)="hospital.editIsVisible=$event"
+                                (editHospital)="loadHospitals()">
+        </app-hospital-edit-form>
+      </div>
+    </div>
+  </section>
+</article>

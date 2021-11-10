@@ -1,0 +1,74 @@
+<form class="create-doctor-container" [formGroup]="doctorForm">
+  <div class="create-doctor-field">
+    <label for="name">Name: </label>
+
+    <div class="input">
+      <input id="name" type="text" formControlName="name">
+
+      <small *ngIf="doctorForm.controls.name.errors && doctorForm.controls.name.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-doctor-field">
+    <label for="lastname">Last Name: </label>
+
+    <div class="input">
+      <input id="lastname" type="text" formControlName="lastname">
+
+      <small *ngIf="doctorForm.controls.lastname.errors && doctorForm.controls.lastname.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-doctor-field">
+    <label for="birthday">Birthday: </label>
+
+    <div class="input">
+      <input id="birthday" type="text" formControlName="birthday">
+
+      <small *ngIf="doctorForm.controls.birthday.errors && doctorForm.controls.birthday.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-doctor-field">
+    <label for="address">Address: </label>
+
+    <div class="input">
+      <input id="address" type="text" formControlName="address">
+
+      <small *ngIf="doctorForm.controls.address.errors && doctorForm.controls.address.touched">
+        * The address is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-doctor-select">
+    <label>Specialities: </label>
+
+    <section class="doctor-specialities">
+      <small class="speciality" *ngFor="let speciality of specialities" [ngClass]="{'selected':speciality.isVisible}"
+             (click)="addSpeciality(speciality)">
+        {{speciality.name}}
+      </small>
+    </section>
+  </div>
+
+  <div class="create-doctor-profile">
+    <label for="file">Profile picture</label>
+
+    <input (change)="getFile($event)" id="file" type="file" formControlName="file">
+  </div>
+
+  <button class="common-button create-doctor-button" type="submit" [disabled]="doctorForm.invalid" (click)="send()">
+    <label>create</label>
+  </button>
+
+  <button class="common-button cancel-button" type="submit" (click)="cancel.emit(false)">
+    <label>cancel</label>
+  </button>
+</form>

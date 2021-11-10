@@ -1,0 +1,29 @@
+.common-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  outline: none;
+  cursor: pointer;
+  border: initial;
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  height: 50px;
+
+  #searchInput {
+    font-family: Exo-font, serif;
+    border: 1px solid #3B5249;
+    height: 40px;
+    width: 200px;
+    padding-left: 15px;
+    border-radius: 5px;
+  }
+}

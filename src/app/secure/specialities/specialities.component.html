@@ -1,0 +1,13 @@
+<article class="speciality-container">
+  <section class="speciality-content">
+    <div class="speciality-card" *ngFor="let speciality of specialities">
+      <img src="../../../assets/img/{{speciality.name}}.JPG" alt="avatar"/>
+
+      <label class="speciality-title">{{speciality.name|titlecase}}</label>
+
+      <label class="speciality-description">{{speciality.description}}</label>
+
+      <fa-icon [icon]="deleteIcon" (click)="deleteSpeciality(speciality)"></fa-icon>
+    </div>
+  </section>
+</article>

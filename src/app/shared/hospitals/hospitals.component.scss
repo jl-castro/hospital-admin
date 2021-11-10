@@ -1,0 +1,108 @@
+.hospital-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #F3F4ED;
+
+  .hospital-title {
+    font-size: 2em;
+    margin: 20px;
+  }
+
+  .hospital-options {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .add-hospital {
+      margin-left: 50px;
+      width: 140px;
+      height: 40px;
+      background-color: #393E46;
+      color: #dbdcd5;
+      border-radius: 5px;
+    }
+  }
+
+  .hospital-create-card {
+    height: 80px;
+    width: 90%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 5px 0, rgba(0, 0, 0, 0.1) 0 0 1px 0;
+    border-radius: 5px;
+    animation: fade-in .3s ease-in;
+  }
+
+  .search-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+    height: 50px;
+
+    #searchInput {
+      font-family: Exo-font, serif;
+      border: 1px solid #4b5358;
+      height: 40px;
+      width: 200px;
+      padding-left: 15px;
+      border-radius: 5px;
+    }
+  }
+
+
+  .hospital-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  .hospital-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: calc(100% - 150px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 5px 0, rgba(0, 0, 0, 0.1) 0 0 1px 0;
+    margin: 10px 0;
+    position: relative;
+    animation: appear-from-left 1s ease-in;
+    transition: background-color .3s ease-in;
+  }
+
+  .hospital-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80px;
+    padding-left: 15px;
+    transition: background-color .5s ease-in;
+
+    .hospital-card-info-name {
+      font-weight: bold;
+    }
+
+    .hospital-card-info-address {
+      color: #536162;
+      font-size: .9em;
+    }
+  }
+
+  .hospital-card-options {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: flex-end;
+
+    app-hospital-button {
+      margin: 0 10px;
+    }
+  }
+
+  .hospital-card-edit {
+    height: 80px;
+    grid-column: 1/3;
+  }
+}

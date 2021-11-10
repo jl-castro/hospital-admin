@@ -1,0 +1,78 @@
+.secure-container {
+  display: flex;
+  width: calc(100% - 1px);
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  background: #F3F4ED;
+  border-left: 1px solid #dbdcd5;
+  animation: fade-in 1s ease-in;
+}
+
+.secure-container-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 130px;
+  place-items: center;
+
+  .secure-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+    background: #393E46;
+    border-radius: 6px;
+    box-shadow: 0 15px 10px -15px #393E46;
+
+    .secure-text {
+      font-family: Exo-font, serif;
+      font-size: 1.2em;
+      color: #dbdcd5;
+    }
+
+    .secure-icon {
+      font-size: 3em;
+    }
+  }
+
+  .doctor-button {
+    background: #A9333A;
+
+    .secure-icon {
+      color: #dbdcd5;
+    }
+  }
+
+  .patient-button {
+    background: #3E065F;
+
+    .secure-icon {
+      color: #dbdcd5;
+    }
+  }
+
+  .speciality-button {
+    background: #E26A2C;
+
+    .secure-icon {
+      color: #dbdcd5;
+    }
+  }
+}
+
+.secure-container-data {
+  width: 100%;
+  height: 100%;
+}
+
+.active {
+  .secure-text {
+    font-weight: bold;
+    border-bottom: 2px solid #dbdcd5;
+  }
+
+  .secure-icon {
+    animation: blink-icon 1s ease-in-out infinite;
+  }
+}

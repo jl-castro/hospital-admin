@@ -1,0 +1,12 @@
+.doctor-item-info {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  padding-left: 15px;
+
+  label {
+    font-weight: bold;
+    padding-left: 8px;
+  }
+}

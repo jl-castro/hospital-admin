@@ -1,0 +1,32 @@
+.nothing-selected-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #F3F4ED;
+  animation: fade-in 1s ease-in;
+
+  .icons-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-width: 300px;
+    font-size: 3em;
+
+    .vehicle-icon{
+      position: relative;
+      animation: left-to-right 3s infinite ease-in-out;
+    }
+
+    .hospital-icon{
+      color: #132C33;
+      font-size: 1.8em;
+    }
+  }
+}
+
+.nothing-selected-text{
+  font-size: 1.3em;
+}

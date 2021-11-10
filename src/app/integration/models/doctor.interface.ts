@@ -1,11 +1,21 @@
 export interface DoctorI {
-  id?: number;
-  speciality: SpecialityI[];
+  doctorId?: number;
+  name: string;
+  lastName: string;
+  address: string;
+  birthday: string;
+  specialities: SpecialityI[];
+  hospitalId: number;
+  profileId?: string;
+  urlImage?: any;
+  isVisible: boolean;
 }
 
 export interface SpecialityI {
-  id: number;
+  specialityId: number;
   name: string;
   description: string;
-  avatarId: string;
+  avatarId: number;
+  hospitalId: number;
+  isVisible: boolean;
 }

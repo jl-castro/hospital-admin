@@ -1,0 +1,52 @@
+<article class="doctor-container">
+  <button class="common-button create-doctor-button" (click)="createIsVisible=true" *ngIf="!createIsVisible">
+    <label>Add Doctor</label>
+
+    <fa-icon [icon]="addIcon"></fa-icon>
+  </button>
+
+  <section class="doctor-create-form" *ngIf="createIsVisible">
+    <app-doctor-create-form (cancel)="createIsVisible=$event"
+                            (createDoctor)="getDoctorsList(hospitalId)"></app-doctor-create-form>
+  </section>
+
+  <section class="doctor-content" *ngIf="!createIsVisible">
+    <div class="search-input">
+      <label for="searchInput">Buscar</label>
+
+      <input id="searchInput" type="text" [(ngModel)]="inputText" name="inputText">
+
+      <label for="name">Name</label>
+
+      <input id="name" type="radio" name="doctor-input" value="name" [(ngModel)]="searchOption">
+
+      <label for="lastname">Last Name</label>
+
+      <input id="lastname" type="radio" name="doctor-input" value="lastname" [(ngModel)]="searchOption">
+    </div>
+
+    <div class="doctor-item" *ngFor="let doctor of doctors|doctorFilter:inputText:searchOption">
+      <app-tag-name [name]="doctor.name" [lastName]="doctor.lastName"></app-tag-name>
+
+      <app-show-content-button [isVisible]="doctor.isVisible"
+                               (setVisibility)="doctor.isVisible=$event" (deleteUser)="deleteDoctor(doctor)"></app-show-content-button>
+
+      <div class="info-content" *ngIf="doctor.isVisible">
+        <span class="doctor-picture">
+          <img src="{{doctor.urlImage}}" alt="pic">
+        </span>
+
+        <app-tag-user-data [userTitleData]="'Name'" [userData]="doctor.name"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Last Name'" [userData]="doctor.lastName"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Address'" [userData]="doctor.address"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Birthday'"
+                           [userData]="doctor.birthday|date:'mediumDate'"></app-tag-user-data>
+
+        <app-speciality-info class="info-speciality" [specialities]="doctor.specialities"></app-speciality-info>
+      </div>
+    </div>
+  </section>
+</article>

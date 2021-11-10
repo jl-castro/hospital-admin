@@ -2,9 +2,62 @@
   from {
     background: var(--color-basic-light);
     opacity: 0.3;
-    top: -120px;
+    top: -130px;
   }
   to {
     top: 0;
+  }
+}
+
+@keyframes left-to-right {
+  from {
+    opacity: 0.3;
+    left: 0;
+    color: #393E46;
+  }
+  to {
+    opacity: 0.9;
+    left: 180px;
+    color: #c85c5c;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear-from-left {
+  from {
+    left: -20px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes load-card {
+  from {
+    opacity: 0.3;
+    top: -20px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes blink-icon {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
   }
 }

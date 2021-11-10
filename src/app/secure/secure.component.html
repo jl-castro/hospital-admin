@@ -1,1 +1,25 @@
-<p>secure works!</p>
+<article class="secure-container">
+  <section class="secure-container-buttons">
+    <button class="common-button secure-buttons doctor-button" [routerLink]="['doctors']" routerLinkActive="active">
+      <label class="secure-text">Doctors</label>
+
+      <fa-icon class="secure-icon" [icon]="doctorIcon"></fa-icon>
+    </button>
+
+    <button class="common-button secure-buttons patient-button" [routerLink]="['patients']" routerLinkActive="active">
+      <label class="secure-text">Patients</label>
+
+      <fa-icon class="secure-icon" [icon]="patientIcon"></fa-icon>
+    </button>
+
+    <button class="common-button secure-buttons speciality-button" [routerLink]="['specialities']" routerLinkActive="active">
+      <label class="secure-text">Specialities</label>
+
+      <fa-icon class="secure-icon" [icon]="specialityIcon"></fa-icon>
+    </button>
+  </section>
+
+  <section class="secure-container-data">
+    <router-outlet></router-outlet>
+  </section>
+</article>

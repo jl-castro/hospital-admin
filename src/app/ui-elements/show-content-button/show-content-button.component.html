@@ -1,0 +1,13 @@
+<section class="doctor-item-options">
+  <button class="common-button options-button">
+    <fa-icon class="delete" [icon]="deleteIcon" (click)="deleteUser.emit(true)"></fa-icon>
+  </button>
+
+  <button class="common-button options-button" *ngIf="!isVisible">
+    <fa-icon class="visible" [icon]="isVisibleIcon" (click)="setVisibility.emit(true)"></fa-icon>
+  </button>
+
+  <button class="common-button options-button" *ngIf="isVisible">
+    <fa-icon class="not-visible" [icon]="isNotVisibleIcon" (click)="setVisibility.emit(false)"></fa-icon>
+  </button>
+</section>

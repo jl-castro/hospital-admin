@@ -1,0 +1,33 @@
+<form class="create-hospital-container" [formGroup]="hospitalForm">
+  <div class="create-hospital-field">
+    <label for="name">Name: </label>
+
+    <div class="input">
+      <input id="name" type="text" formControlName="name">
+
+      <small *ngIf="hospitalForm.controls.name.errors && hospitalForm.controls.name.touched">
+        * The name is mandatory
+      </small>
+    </div>
+  </div>
+
+  <div class="create-hospital-field">
+    <label for="address">Address</label>
+
+    <div class="input">
+      <input id="address" type="text" formControlName="address">
+
+      <small *ngIf="hospitalForm.controls.address.errors && hospitalForm.controls.address.touched">
+        * The address is mandatory
+      </small>
+    </div>
+  </div>
+
+  <button class="common-button create-hospital-button" type="submit" [disabled]="hospitalForm.invalid" (click)="send()">
+    <label>create</label>
+  </button>
+
+  <button class="common-button cancel-button" type="submit" (click)="cancel.emit(false)">
+    <label>cancel</label>
+  </button>
+</form>

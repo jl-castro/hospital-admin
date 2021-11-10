@@ -1,5 +1,6 @@
 export interface HospitalI {
-  id: number;
+  id?: number;
   name: string;
   address: string;
+  editIsVisible?: boolean;
 }

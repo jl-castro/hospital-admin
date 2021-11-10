@@ -1,0 +1,52 @@
+<article class="patient-container">
+  <button class="common-button create-patient-button" (click)="createIsVisible=true" *ngIf="!createIsVisible">
+    <label>Add Patient</label>
+
+    <fa-icon [icon]="addIcon"></fa-icon>
+  </button>
+
+  <section class="patient-create-form" *ngIf="createIsVisible">
+    <app-patient-create-form (cancel)="createIsVisible=$event"
+                             (createPatient)="getPatientsList(hospitalId)"></app-patient-create-form>
+  </section>
+
+  <section class="patient-content" *ngIf="!createIsVisible">
+    <div class="search-input">
+      <label for="searchInput">Buscar</label>
+
+      <input id="searchInput" type="text" [(ngModel)]="inputText" name="inputText">
+
+      <label for="name">Name</label>
+
+      <input id="name" type="radio" name="patient-input" value="name" [(ngModel)]="searchOption">
+
+      <label for="lastname">Last Name</label>
+
+      <input id="lastname" type="radio" name="patient-input" value="lastname" [(ngModel)]="searchOption">
+    </div>
+
+    <div class="patient-item" *ngFor="let patient of patientsList|patientFilter:inputText:searchOption">
+      <app-tag-name [name]="patient.name" [lastName]="patient.lastName"></app-tag-name>
+
+      <app-show-content-button [isVisible]="patient.isVisible"
+                               (setVisibility)="patient.isVisible=$event"
+                               (deleteUser)="deletePatient(patient)"></app-show-content-button>
+
+      <div class="info-patient-content" *ngIf="patient.isVisible">
+        <span class="patient-picture">
+          <img src="{{patient.urlImage}}" alt="patient picture">
+        </span>
+
+        <app-tag-user-data [userTitleData]="'Name'" [userData]="patient.name"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Last Name'" [userData]="patient.lastName"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Address'" [userData]="patient.address"></app-tag-user-data>
+
+        <app-tag-user-data [userTitleData]="'Birthday'"
+                           [userData]="patient.birthday|date:'mediumDate'"></app-tag-user-data>
+      </div>
+    </div>
+
+  </section>
+</article>
