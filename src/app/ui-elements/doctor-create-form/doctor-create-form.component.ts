@@ -27,10 +27,10 @@ export class DoctorCreateFormComponent implements OnInit, OnDestroy {
     this.createDoctor = new EventEmitter<DoctorI>();
     this.cancel = new EventEmitter<boolean>();
     this.doctorForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        lastname: ['', Validators.required],
+        name: ['', [Validators.required, Validators.maxLength(15)]],
+        lastname: ['', [Validators.required, Validators.maxLength(15)]],
         birthday: ['', Validators.required],
-        address: ['', Validators.required],
+        address: ['', [Validators.required, Validators.maxLength(50)]],
         file: ['', Validators.required],
       }
     );

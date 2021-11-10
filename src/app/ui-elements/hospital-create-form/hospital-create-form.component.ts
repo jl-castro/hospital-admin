@@ -18,8 +18,8 @@ export class HospitalCreateFormComponent implements OnInit {
     this.createHospital = new EventEmitter<HospitalI>();
     this.cancel = new EventEmitter<boolean>();
     this.hospitalForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        address: ['', Validators.required]
+        name: ['', [Validators.required, Validators.maxLength(30)]],
+        address: ['', [Validators.required, Validators.maxLength(50)]]
       }
     );
   }

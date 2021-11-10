@@ -27,8 +27,8 @@ export class HospitalEditFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.hospitalForm = this.formBuilder.group({
-        name: [this.hospital.name, Validators.required],
-        address: [this.hospital.address, Validators.required]
+        name: [this.hospital.name, [Validators.required, Validators.maxLength(30)]],
+        address: [this.hospital.address, [Validators.required, Validators.maxLength(50)]]
       }
     );
   }
