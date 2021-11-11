@@ -61,11 +61,17 @@
   <div class="create-doctor-profile">
     <label for="file">Profile picture</label>
 
-    <input (change)="getFile($event)" id="file" type="file" formControlName="file">
+    <input id="file" type="file" accept="image/*" (change)="getFile($event)">
   </div>
 
-  <button class="common-button create-doctor-button" type="submit" [disabled]="doctorForm.invalid" (click)="send()">
+  <button class="common-button create-doctor-button" type="submit" [disabled]="doctorForm.invalid" (click)="send()"
+          *ngIf="!editUser.doctorId">
     <label>create</label>
+  </button>
+
+  <button class="common-button create-doctor-button" type="submit" [disabled]="doctorForm.invalid" (click)="edit()"
+          *ngIf="editUser.doctorId">
+    <label>edit</label>
   </button>
 
   <button class="common-button cancel-button" type="submit" (click)="cancel.emit(false)">

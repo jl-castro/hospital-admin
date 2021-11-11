@@ -1,5 +1,5 @@
 <article class="patient-container">
-  <button class="common-button create-patient-button" (click)="createIsVisible=true" *ngIf="!createIsVisible">
+  <button class="common-button create-patient-button" (click)="createPatient()" *ngIf="!createIsVisible">
     <label>Add Patient</label>
 
     <fa-icon [icon]="addIcon"></fa-icon>
@@ -7,7 +7,9 @@
 
   <section class="patient-create-form" *ngIf="createIsVisible">
     <app-patient-create-form (cancel)="createIsVisible=$event"
-                             (createPatient)="getPatientsList(hospitalId)"></app-patient-create-form>
+                             (createPatient)="getPatientsList(hospitalId)"
+                             [editUser]="editablePatient">
+    </app-patient-create-form>
   </section>
 
   <section class="patient-content" *ngIf="!createIsVisible">
@@ -30,7 +32,8 @@
 
       <app-show-content-button [isVisible]="patient.isVisible" [user]="patient" [userType]="'Patient'"
                                (setVisibility)="patient.isVisible=$event"
-                               (deleteUser)="deletePatient(patient)"></app-show-content-button>
+                               (deleteUser)="deletePatient(patient)"
+                               (editUser)="editPatient($event,patient)"></app-show-content-button>
 
       <div class="info-patient-content" *ngIf="patient.isVisible">
         <span class="patient-picture">

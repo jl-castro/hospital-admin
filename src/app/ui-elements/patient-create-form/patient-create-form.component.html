@@ -50,11 +50,17 @@
   <div class="create-patient-profile">
     <label for="file">Profile picture</label>
 
-    <input id="file" type="file" >
+    <input id="file" type="file" (change)="getFile($event)" accept="image/*">
   </div>
 
-  <button class="common-button create-patient-button" type="submit" [disabled]="patientForm.invalid" (click)="send()">
+  <button class="common-button create-patient-button" type="submit" [disabled]="patientForm.invalid"
+          (click)="send()" *ngIf="!editUser.patientId">
     <label>create</label>
+  </button>
+
+  <button class="common-button create-patient-button" type="submit" [disabled]="patientForm.invalid"
+          (click)="edit()" *ngIf="editUser.patientId">
+    <label>edit</label>
   </button>
 
   <button class="common-button cancel-button" type="submit" (click)="cancel.emit(false)">

@@ -36,8 +36,13 @@
     color: var(--color-basic-light3);
   }
 
-  .view{
+  .edit {
     background: var(--color-basic-orange);
+    color: var(--color-basic-light3);
+  }
+
+  .view{
+    background: var(--color-basic-blue2);
     color: var(--color-basic-light3);
   }
 }

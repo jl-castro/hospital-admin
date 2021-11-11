@@ -5,13 +5,12 @@ import {ShowContentButtonComponent} from './show-content-button/show-content-but
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TagUserDataComponent} from './tag-user-data/tag-user-data.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HospitalButtonComponent } from './hospital-button/hospital-button.component';
-import { HospitalCreateFormComponent } from './hospital-create-form/hospital-create-form.component';
-import { HospitalEditFormComponent } from './hospital-edit-form/hospital-edit-form.component';
-import { DoctorEditFormComponent } from './doctor-edit-form/doctor-edit-form.component';
-import { DoctorCreateFormComponent } from './doctor-create-form/doctor-create-form.component';
-import { PatientCreateFormComponent } from './patient-create-form/patient-create-form.component';
-import { HistoryModalComponent } from './history-modal/history-modal.component';
+import {HospitalButtonComponent} from './hospital-button/hospital-button.component';
+import {HospitalCreateFormComponent} from './hospital-create-form/hospital-create-form.component';
+import {HospitalEditFormComponent} from './hospital-edit-form/hospital-edit-form.component';
+import {DoctorCreateFormComponent} from './doctor-create-form/doctor-create-form.component';
+import {PatientCreateFormComponent} from './patient-create-form/patient-create-form.component';
+import {HistoryModalComponent} from './history-modal/history-modal.component';
 
 
 @NgModule({
@@ -22,7 +21,6 @@ import { HistoryModalComponent } from './history-modal/history-modal.component';
     HospitalButtonComponent,
     HospitalCreateFormComponent,
     HospitalEditFormComponent,
-    DoctorEditFormComponent,
     DoctorCreateFormComponent,
     PatientCreateFormComponent,
     HistoryModalComponent,

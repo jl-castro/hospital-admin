@@ -29,7 +29,7 @@ export class DoctorService {
     });
   }
 
-  updateDoctor(doctorId: number | undefined, doctor: DoctorI, hospitalId: string): Observable<DoctorI> {
+  updateDoctor(doctorId: any, doctor: DoctorI, hospitalId: any): Observable<DoctorI> {
     return this.http.put<DoctorI>(`${environment.url}/doctors/${doctorId}`, doctor, {
       headers: {
         'User-ID': '1',

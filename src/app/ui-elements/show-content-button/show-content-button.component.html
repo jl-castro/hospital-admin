@@ -4,12 +4,15 @@
   </button>
 
   <app-history-modal id="modal_1" class="hidden">
-    Dialog Header
     <button (click)="closeDialog()">Close Dialog</button>
   </app-history-modal>
 
   <button class="common-button options-button">
     <fa-icon class="delete" [icon]="deleteIcon" (click)="deleteUser.emit(true)"></fa-icon>
+  </button>
+
+  <button class="common-button options-button">
+    <fa-icon class="edit" [icon]="editIcon" (click)="editUser.emit(true)"></fa-icon>
   </button>
 
   <button class="common-button options-button" *ngIf="!isVisible">

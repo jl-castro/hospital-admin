@@ -21,6 +21,7 @@ export class DoctorsComponent implements OnInit, OnDestroy {
   public searchOption = 'name';
   public createIsVisible = false;
   public addIcon = faPlus;
+  public editableDoctor: DoctorI = {} as DoctorI;
 
   constructor(private hospitalNotifierService: HospitalNotifierService,
               private doctorService: DoctorService,
@@ -64,6 +65,18 @@ export class DoctorsComponent implements OnInit, OnDestroy {
     this.doctorService.deleteDoctor(Number(doctor.doctorId)).pipe(take(1)).subscribe(res => {
       this.getDoctorsList(this.hospitalId);
     });
+  }
+
+  editDoctor(event: any, doctor: DoctorI) {
+    if (event) {
+      this.editableDoctor = {...doctor};
+      this.createIsVisible = true;
+    }
+  }
+
+  createDoctor() {
+    this.editableDoctor = {} as DoctorI;
+    this.createIsVisible = true;
   }
 
 }

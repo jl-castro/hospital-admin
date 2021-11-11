@@ -1,5 +1,5 @@
 <article class="doctor-container">
-  <button class="common-button create-doctor-button" (click)="createIsVisible=true" *ngIf="!createIsVisible">
+  <button class="common-button create-doctor-button" (click)="createDoctor()" *ngIf="!createIsVisible">
     <label>Add Doctor</label>
 
     <fa-icon [icon]="addIcon"></fa-icon>
@@ -7,7 +7,9 @@
 
   <section class="doctor-create-form" *ngIf="createIsVisible">
     <app-doctor-create-form (cancel)="createIsVisible=$event"
-                            (createDoctor)="getDoctorsList(hospitalId)"></app-doctor-create-form>
+                            (createDoctor)="getDoctorsList(hospitalId)"
+                            [editUser]="editableDoctor">
+    </app-doctor-create-form>
   </section>
 
   <section class="doctor-content" *ngIf="!createIsVisible">
@@ -30,7 +32,8 @@
 
       <app-show-content-button [isVisible]="doctor.isVisible" [user]="doctor" [userType]="'Doctor'"
                                (setVisibility)="doctor.isVisible=$event"
-                               (deleteUser)="deleteDoctor(doctor)"></app-show-content-button>
+                               (deleteUser)="deleteDoctor(doctor)"
+                               (editUser)="editDoctor($event,doctor)"></app-show-content-button>
 
       <div class="info-content" *ngIf="doctor.isVisible">
         <span class="doctor-picture">

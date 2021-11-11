@@ -29,6 +29,15 @@ export class PatientService {
     });
   }
 
+  updatePatient(patientId: any, patient: PatientI, hospitalId: any): Observable<PatientI> {
+    return this.http.put<PatientI>(`${environment.url}/patients/${patientId}`, patient, {
+      headers: {
+        'User-ID': '1',
+        'hospitalId': hospitalId
+      }
+    });
+  }
+
   deletePatient(patientId: number): Observable<PatientI> {
     return this.http.delete<PatientI>(`${environment.url}/patients/${patientId}`);
   }

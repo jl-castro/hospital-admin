@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {faChevronDown, faChevronUp, faEye, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown, faChevronUp, faEdit, faEye, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {ModalInteractionService} from "../../integration/services/modal-interaction.service";
 
 @Component({
@@ -8,20 +8,23 @@ import {ModalInteractionService} from "../../integration/services/modal-interact
   styleUrls: ['./show-content-button.component.scss']
 })
 export class ShowContentButtonComponent implements OnInit {
-  @Input() isVisible = false;
   @Output() setVisibility: EventEmitter<boolean>;
   @Output() deleteUser: EventEmitter<boolean>;
+  @Output() editUser: EventEmitter<boolean>;
+  @Input() isVisible = false;
   @Input() user: any;
   @Input() userType: string = '';
 
   public isVisibleIcon = faChevronDown;
   public isNotVisibleIcon = faChevronUp;
   public deleteIcon = faTrashAlt;
+  public editIcon = faEdit;
   public viewIcon = faEye;
 
   constructor(private modalInteraction: ModalInteractionService) {
     this.setVisibility = new EventEmitter<boolean>();
     this.deleteUser = new EventEmitter<boolean>();
+    this.editUser = new EventEmitter<boolean>();
   }
 
   ngOnInit(): void {

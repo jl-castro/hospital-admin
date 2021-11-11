@@ -16,6 +16,7 @@ import {take} from "rxjs/operators";
 export class PatientsComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   public patientsList: PatientI[] = [];
+  public editablePatient: PatientI = {} as PatientI;
   public searchOption = 'name';
   public createIsVisible = false;
   public hospitalId = '';
@@ -62,5 +63,17 @@ export class PatientsComponent implements OnInit, OnDestroy {
     this.patientService.deletePatient(Number(patient.patientId)).pipe(take(1)).subscribe(res => {
       this.getPatientsList(this.hospitalId);
     });
+  }
+
+  createPatient() {
+    this.editablePatient = {} as PatientI;
+    this.createIsVisible = true;
+  }
+
+  editPatient(event: any, patient: PatientI) {
+    if (event) {
+      this.editablePatient = {...patient};
+      this.createIsVisible = true;
+    }
   }
 }
