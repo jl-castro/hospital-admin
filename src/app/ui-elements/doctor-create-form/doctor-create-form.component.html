@@ -1,6 +1,6 @@
 <form class="create-doctor-container" [formGroup]="doctorForm">
   <div class="create-doctor-field">
-    <label for="name">Name: </label>
+    <label class="title" for="name">Name: </label>
 
     <div class="input">
       <input id="name" type="text" formControlName="name">
@@ -12,7 +12,7 @@
   </div>
 
   <div class="create-doctor-field">
-    <label for="lastname">Last Name: </label>
+    <label class="title" for="lastname">Last Name: </label>
 
     <div class="input">
       <input id="lastname" type="text" formControlName="lastname">
@@ -24,19 +24,7 @@
   </div>
 
   <div class="create-doctor-field">
-    <label for="birthday">Birthday: </label>
-
-    <div class="input">
-      <input id="birthday" type="text" formControlName="birthday">
-
-      <small *ngIf="doctorForm.controls.birthday.errors && doctorForm.controls.birthday.touched">
-        * The name is mandatory
-      </small>
-    </div>
-  </div>
-
-  <div class="create-doctor-field">
-    <label for="address">Address: </label>
+    <label class="title" for="address">Address: </label>
 
     <div class="input">
       <input id="address" type="text" formControlName="address">
@@ -47,8 +35,20 @@
     </div>
   </div>
 
+  <div class="create-doctor-field datepicker">
+    <label class="title">Birthday: </label>
+
+    <dl-date-time-picker
+      startView="day"
+      maxView="year"
+      minView="day"
+      formControlName="birthday"
+    >
+    </dl-date-time-picker>
+  </div>
+
   <div class="create-doctor-select">
-    <label>Specialities: </label>
+    <label class="title">Specialities: </label>
 
     <section class="doctor-specialities">
       <small class="speciality" *ngFor="let speciality of specialities" [ngClass]="{'selected':speciality.isVisible}"
@@ -59,7 +59,7 @@
   </div>
 
   <div class="create-doctor-profile">
-    <label for="file">Profile picture</label>
+    <label class="title" for="file">Profile picture</label>
 
     <input id="file" type="file" accept="image/*" (change)="getFile($event)">
   </div>

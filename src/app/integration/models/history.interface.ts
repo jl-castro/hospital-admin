@@ -1,9 +1,9 @@
 export interface HistoryNotesI {
-  id: number;
+  id?: number;
   description: string;
   date: string;
   patientId: number;
   doctorId: number;
-  createdAt: string;
+  createdAt?: string;
   userName?: string;
 }

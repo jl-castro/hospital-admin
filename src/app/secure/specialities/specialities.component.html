@@ -3,7 +3,7 @@
     <div class="speciality-card" *ngFor="let speciality of specialities">
       <img src="../../../assets/img/{{speciality.name}}.JPG" alt="avatar"/>
 
-      <label class="speciality-title">{{speciality.name|titlecase}}</label>
+      <label class="speciality-title">{{speciality.name|uppercase}}</label>
 
       <label class="speciality-description">{{speciality.description}}</label>
 

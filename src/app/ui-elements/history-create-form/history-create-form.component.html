@@ -1,0 +1,31 @@
+<section class="history-container">
+  <div class="history-input">
+    <label for="patient">Patient: </label>
+
+    <select name="patient" id="patient" [(ngModel)]="patient">
+      <option [value]="patient.patientId" *ngFor="let patient of patientList">{{patient.name}} {{patient.lastName}}</option>
+    </select>
+  </div>
+
+  <div class="history-input">
+    <label for="doctor">Doctor: </label>
+
+    <select name="doctor" id="doctor" [(ngModel)]="doctor">
+      <option [value]="doctor.doctorId" *ngFor="let doctor of doctorList">Dr. {{doctor.name}} {{doctor.lastName}}</option>
+    </select>
+  </div>
+
+  <div class="history-input">
+    <label for="description">Description: </label>
+
+    <textarea id="description" type="text" [(ngModel)]="description"></textarea>
+  </div>
+
+  <button class="common-button history-button ok" (click)="createHistory()">
+    <fa-icon [icon]="okIcon"></fa-icon>
+  </button>
+
+  <button class="common-button history-button cancel" (click)="cancel.emit(false)">
+    <fa-icon [icon]="cancelIcon"></fa-icon>
+  </button>
+</section>

@@ -12,6 +12,7 @@ import {SpecialityInfoComponent} from './speciality-info/speciality-info.compone
 import {UiElementsModule} from "../ui-elements/ui-elements.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IntegrationModule} from "../integration/integration.module";
+import {AppModule} from "../app.module";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {IntegrationModule} from "../integration/integration.module";
     ReactiveFormsModule,
     UiElementsModule,
     FormsModule,
-    IntegrationModule
+    IntegrationModule,
   ],
   exports: [
     HospitalsComponent,

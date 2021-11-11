@@ -16,11 +16,12 @@ export class HistoryService {
     return this.http.get<HistoryNotesI[]>(`${environment.url}/histories`);
   }
 
-  postHistory(history: HistoryNotesI, historyId: any): Observable<HistoryNotesI> {
+  postHistory(history: HistoryNotesI): Observable<HistoryNotesI> {
     return this.http.post<HistoryNotesI>(`${environment.url}/histories`, history, {
       headers: {
         'User-ID': '1',
-        'historyId': historyId
+        'doctorId': history.doctorId + '',
+        'patientId': history.patientId + '',
       }
     });
   }

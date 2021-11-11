@@ -11,6 +11,8 @@ import {HospitalEditFormComponent} from './hospital-edit-form/hospital-edit-form
 import {DoctorCreateFormComponent} from './doctor-create-form/doctor-create-form.component';
 import {PatientCreateFormComponent} from './patient-create-form/patient-create-form.component';
 import {HistoryModalComponent} from './history-modal/history-modal.component';
+import {DlDateTimeDateModule, DlDateTimePickerModule} from "angular-bootstrap-datetimepicker";
+import {HistoryCreateFormComponent} from "./history-create-form/history-create-form.component";
 
 
 @NgModule({
@@ -24,12 +26,15 @@ import {HistoryModalComponent} from './history-modal/history-modal.component';
     DoctorCreateFormComponent,
     PatientCreateFormComponent,
     HistoryModalComponent,
+    HistoryCreateFormComponent
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DlDateTimeDateModule,
+    DlDateTimePickerModule
   ],
   exports: [
     TagNameComponent,
@@ -41,6 +46,7 @@ import {HistoryModalComponent} from './history-modal/history-modal.component';
     DoctorCreateFormComponent,
     PatientCreateFormComponent,
     HistoryModalComponent,
+    HistoryCreateFormComponent
   ]
 })
 export class UiElementsModule {

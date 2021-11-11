@@ -69,7 +69,6 @@
     margin: 10px 0;
     position: relative;
     animation: appear-from-left 1s ease-in;
-    transition: background-color .3s ease-in;
   }
 
   .hospital-card-info {
@@ -104,5 +103,17 @@
   .hospital-card-edit {
     height: 80px;
     grid-column: 1/3;
+  }
+
+  .hospital-card-history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1/3;
+    height: 150px;
+
+    app-history-create-form {
+      width: 100%;
+    }
   }
 }

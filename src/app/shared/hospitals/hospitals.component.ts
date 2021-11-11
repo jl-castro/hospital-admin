@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HospitalService} from "../../integration/services/hospital.service";
 import {HospitalI} from "../../integration/models/hospital.interface";
-import {faEdit, faEye, faPlus, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faEye, faFileMedical, faPlus, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {Subscription} from "rxjs";
 import {take} from "rxjs/operators";
 
@@ -17,6 +17,7 @@ export class HospitalsComponent implements OnInit, OnDestroy {
   public inputText = '';
   public deleteIcon = faTrashAlt;
   public viewIcon = faEye;
+  public historyIcon = faFileMedical;
   public editIcon = faEdit;
   public addIcon = faPlus;
 

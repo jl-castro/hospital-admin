@@ -2,7 +2,7 @@
   <section class="speciality-content" *ngFor="let speciality of specialities">
     <img src="../../../assets/img/{{speciality.name}}.JPG" alt="avatar"/>
 
-    <label>{{speciality.name}}</label>
+    <label>{{speciality.name|uppercase}}</label>
 
     <label class="speciality-description">{{speciality.description}}</label>
   </section>

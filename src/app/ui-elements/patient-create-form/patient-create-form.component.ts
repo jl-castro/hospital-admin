@@ -27,7 +27,7 @@ export class PatientCreateFormComponent implements OnInit {
     this.patientForm = this.formBuilder.group({
         name: ['', [Validators.required, Validators.maxLength(20)]],
         lastname: ['', [Validators.required, Validators.maxLength(20)]],
-        birthday: ['', Validators.required],
+        birthday: [new Date(), Validators.required],
         address: ['', [Validators.required, Validators.maxLength(50)]],
       }
     );
@@ -109,7 +109,7 @@ export class PatientCreateFormComponent implements OnInit {
       this.patientForm = this.formBuilder.group({
           name: [this.editUser.name, [Validators.required, Validators.maxLength(15)]],
           lastname: [this.editUser.lastName, [Validators.required, Validators.maxLength(15)]],
-          birthday: [this.editUser.birthday, Validators.required],
+          birthday: [new Date(this.editUser.birthday), Validators.required],
           address: [this.editUser.address, [Validators.required, Validators.maxLength(50)]],
         }
       );

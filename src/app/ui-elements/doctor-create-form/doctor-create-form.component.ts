@@ -32,7 +32,7 @@ export class DoctorCreateFormComponent implements OnInit, OnDestroy {
     this.doctorForm = this.formBuilder.group({
         name: ['', [Validators.required, Validators.maxLength(15)]],
         lastname: ['', [Validators.required, Validators.maxLength(15)]],
-        birthday: ['', Validators.required],
+        birthday: [new Date(), Validators.required],
         address: ['', [Validators.required, Validators.maxLength(50)]],
       }
     );
@@ -40,6 +40,7 @@ export class DoctorCreateFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.fillUserData();
   }
 
   ngOnDestroy(): void {
@@ -139,14 +140,18 @@ export class DoctorCreateFormComponent implements OnInit, OnDestroy {
           }
         }
       });
+    }
+  }
+
+  fillUserData(): void {
+    if (this.editUser.doctorId) {
       this.doctorForm = this.formBuilder.group({
           name: [this.editUser.name, [Validators.required, Validators.maxLength(15)]],
           lastname: [this.editUser.lastName, [Validators.required, Validators.maxLength(15)]],
-          birthday: [this.editUser.birthday, Validators.required],
+          birthday: [new Date(this.editUser.birthday)],
           address: [this.editUser.address, [Validators.required, Validators.maxLength(50)]],
         }
       );
     }
   }
-
 }

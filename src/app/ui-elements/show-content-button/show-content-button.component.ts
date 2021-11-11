@@ -36,7 +36,6 @@ export class ShowContentButtonComponent implements OnInit {
     let modal_t: any = document.getElementById('modal_1');
     modal_t.classList.remove('hidden');
     modal_t.classList.add('show');
-
   }
 
   closeDialog() {

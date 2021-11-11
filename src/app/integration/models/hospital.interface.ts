@@ -3,4 +3,5 @@ export interface HospitalI {
   name: string;
   address: string;
   editIsVisible?: boolean;
+  historyIsVisible?: boolean;
 }

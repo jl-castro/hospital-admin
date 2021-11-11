@@ -30,8 +30,10 @@
       </div>
 
       <div class="hospital-card-options">
-        <app-hospital-button [icon]="viewIcon" [style]="'view-btn'"
-                             [routerLink]="['secure', hospital.id]">
+        <app-hospital-button [icon]="historyIcon" [style]="'history-btn'" (click)="hospital.historyIsVisible=true">
+        </app-hospital-button>
+
+        <app-hospital-button [icon]="viewIcon" [style]="'view-btn'" [routerLink]="['secure', hospital.id]">
         </app-hospital-button>
 
         <app-hospital-button [icon]="editIcon" [style]="'edit-btn'" (click)="hospital.editIsVisible=true">
@@ -45,6 +47,11 @@
         <app-hospital-edit-form [hospital]="hospital" (cancel)="hospital.editIsVisible=$event"
                                 (editHospital)="loadHospitals()">
         </app-hospital-edit-form>
+      </div>
+
+      <div class="hospital-card-history" *ngIf="hospital.historyIsVisible">
+        <app-history-create-form [hospitalId]="hospital.id" (cancel)="hospital.historyIsVisible=$event">
+        </app-history-create-form>
       </div>
     </div>
   </section>

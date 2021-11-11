@@ -7,6 +7,7 @@
   width: 700px;
   height: min-content;
   animation: fade-in .4s ease-in;
+  display: block;
 }
 
 .modal-body {
@@ -29,7 +30,7 @@
     color: var(--color-basic-light3);
     background-color: var(--color-basic-red);
     border-radius: 5px;
-    margin-top: 15px;
+    margin: 15px 0;
   }
 }
 
@@ -47,7 +48,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  align-items: center;
 
   .history-card {
     display: flex;
@@ -55,6 +56,6 @@
     align-items: center;
     width: 500px;
     height: 70px;
-    border-bottom: 1px solid #4b5358;
+    margin-bottom: 15px;
   }
 }
